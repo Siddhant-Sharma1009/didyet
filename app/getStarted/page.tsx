@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from 'react';
-import Link from 'next/link';
 import { ArrowRight, Terminal, User, Users, CheckCircle2, Shield } from 'lucide-react';
 
 export default function GetStartedPage() {
