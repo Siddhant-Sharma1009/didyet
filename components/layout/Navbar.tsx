@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import Image from "next/image";
 
 interface NavLink {
   name: string;
@@ -26,16 +27,23 @@ const Navbar: React.FC = () => {
   return (
     <nav className="sticky top-0 z-50 w-full border-b border-white/5 bg-[#0F172A]/80 backdrop-blur-md transition-all duration-300">
       <div className="mx-auto max-w-7xl px-6 h-20 flex items-center justify-between">
-        
+
         {/* Logo */}
         <div className="flex items-center gap-2 cursor-pointer group">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-[#22E3A9] to-[#14D9C4] p-[1px] shadow-[0_0_20px_rgba(34,227,169,0.2)] group-hover:shadow-[0_0_30px_rgba(34,227,169,0.4)] transition-all duration-300">
-            <div className="flex h-full w-full items-center justify-center rounded-[11px] bg-[#0F172A]">
-              <div className="h-3 w-3 rounded-sm bg-gradient-to-br from-[#22E3A9] to-[#14D9C4]" />
-            </div>
-          </div>
+          <Image
+            src="/images/logo.jpeg"
+            alt="DidYet Logo"
+            width={42}
+            height={42}
+            priority
+            className="rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
+          />
+
           <span className="text-xl font-bold tracking-tight text-white group-hover:text-white/90 transition-colors">
-            Did<span className="bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent">Yet</span>
+            Did
+            <span className="bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent">
+              Yet
+            </span>
           </span>
         </div>
 
@@ -45,11 +53,10 @@ const Navbar: React.FC = () => {
             <a
               key={link.name}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-200 ${
-                link.highlight 
-                  ? 'bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent hover:brightness-110'
-                  : 'text-slate-400 hover:text-white'
-              }`}
+              className={`text-sm font-medium transition-all duration-200 ${link.highlight
+                ? 'bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent hover:brightness-110'
+                : 'text-slate-400 hover:text-white'
+                }`}
             >
               {link.name}
             </a>
@@ -58,8 +65,8 @@ const Navbar: React.FC = () => {
 
         {/* Desktop CTA Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <a 
-            href="/login" 
+          <a
+            href="/login"
             className="text-sm font-medium text-slate-300 hover:text-white transition-colors px-4 py-2"
           >
             Login
@@ -87,9 +94,8 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Dropdown Panel */}
       <div
-        className={`fixed inset-x-0 top-20 border-b border-white/5 bg-[#0F172A]/95 backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden ${
-          isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
-        }`}
+        className={`fixed inset-x-0 top-20 border-b border-white/5 bg-[#0F172A]/95 backdrop-blur-xl transition-all duration-300 ease-in-out md:hidden ${isOpen ? 'opacity-100 translate-y-0 visible' : 'opacity-0 -translate-y-4 invisible pointer-events-none'
+          }`}
       >
         <div className="flex flex-col gap-4 px-6 py-8">
           {navLinks.map((link) => (
@@ -97,16 +103,15 @@ const Navbar: React.FC = () => {
               key={link.name}
               href={link.href}
               onClick={() => setIsOpen(false)}
-              className={`text-lg font-medium py-2 border-b border-white/5 ${
-                link.highlight
-                  ? 'bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent'
-                  : 'text-slate-300'
-              }`}
+              className={`text-lg font-medium py-2 border-b border-white/5 ${link.highlight
+                ? 'bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent'
+                : 'text-slate-300'
+                }`}
             >
               {link.name}
             </a>
           ))}
-          
+
           {/* Mobile CTAs */}
           <div className="flex flex-col gap-3 pt-4">
             <a

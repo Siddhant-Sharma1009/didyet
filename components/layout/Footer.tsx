@@ -9,6 +9,8 @@ import {
   FaTwitter,
 } from "react-icons/fa";
 
+import Image from "next/image";
+
 export const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
@@ -44,14 +46,23 @@ export const Footer: React.FC = () => {
           {/* Brand Identity / Left Column */}
           <div className="lg:col-span-2 flex flex-col gap-6">
             <Link href="/" className="flex items-center gap-2 group w-fit">
-              <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-[#22E3A9] to-[#14D9C4] p-[1px]">
-                <div className="flex h-full w-full items-center justify-center rounded-[7px] bg-[#0F172A]">
-                  <div className="h-2 w-2 rounded-sm bg-gradient-to-br from-[#22E3A9] to-[#14D9C4]" />
-                </div>
-              </div>
-              <span className="text-lg font-bold tracking-tight text-white">
-                Did<span className="bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent">Yet</span>
-              </span>
+              <div className="flex items-center gap-2 cursor-pointer group">
+                        <Image
+                          src="/images/logo.jpeg"
+                          alt="DidYet Logo"
+                          width={42}
+                          height={42}
+                          priority
+                          className="rounded-xl object-contain transition-transform duration-300 group-hover:scale-105"
+                        />
+              
+                        <span className="text-xl font-bold tracking-tight text-white group-hover:text-white/90 transition-colors">
+                          Did
+                          <span className="bg-gradient-to-r from-[#22E3A9] to-[#14D9C4] bg-clip-text text-transparent">
+                            Yet
+                          </span>
+                        </span>
+                      </div>
             </Link>
             
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">
